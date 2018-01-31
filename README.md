@@ -43,7 +43,26 @@
 - 支持多场景（办公环境、线上环境、Docker）
 - 机器学习判断可疑行为
 
-	
+
+##  系统deamon结构
+```
+├─agent 
+│  ├─agent //守护进程
+│  ├─agent //指令接受、状态反馈、模块更新
+│  ├─sysdetect //信息收集（文件监控、特性信息上报）
+│  ├─syscheck  //信息收集（软件信息、进程信息、用户信息、组信息、自启动信息、服务信息、端口信息、防火墙信息、内核模块信息、配置文件信息）
+│  └─logstash  //日志转发（RPC、队列缓存、离线sqlite3缓存）
+│  
+├─collector // Collector工程
+│  ├─collector //守护进程
+│  └─collector //转发agent通知、同步analyser指令、统计agent状态，上报agent心跳
+│
+├─analyser
+│  ├─analyser//守护进程
+│  └─analyser//控制agent更新、分析agent状态、统计agent日志
+│
+└─consumer//消费kafka-topic更新本地静态日志库
+```
 
 ##  源码结构
 ```
@@ -78,30 +97,7 @@
 │  └─系统管理
 │
 └─end
-
-
-##  系统deamon结构
 ```
-├─agent 
-│  ├─agent //守护进程
-│  ├─agent //指令接受、状态反馈、模块更新
-│  ├─sysdetect //信息收集（文件监控、特性信息上报）
-│  ├─syscheck  //信息收集（软件信息、进程信息、用户信息、组信息、自启动信息、服务信息、端口信息、防火墙信息、内核模块信息、配置文件信息）
-│  └─logstash  //日志转发（RPC、队列缓存、离线sqlite3缓存）
-│  
-├─collector // Collector工程
-│  ├─collector //守护进程
-│  └─collector //转发agent通知、同步analyser指令、统计agent状态，上报agent心跳
-│
-├─analyser
-│  ├─analyser//守护进程
-│  └─analyser//控制agent更新、分析agent状态、统计agent日志
-│
-└─consumer//消费kafka-topic更新本地静态日志库
-
-
-
-	
 
 ## 参与者及致谢
 
