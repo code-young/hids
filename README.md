@@ -29,7 +29,7 @@
 
 
 ## 整体架构图
-![](./doc/LC.png)
+![](./docs/lc.png)
 
 
 ## TODO
