@@ -36,9 +36,11 @@
 ## TODO
 - 配置精细化
 - 基线核查
-- rootkit检查
+- 网络连接
+- Rootkit检查
 - 实时进程及文件监控
-- Aent与Server通信的单双向验证（SSL）
+- linux使用者执行命令
+- Agent与Server通信的单双向验证（SSL）
 - 幻影蜜罐（基于真实环境虚化出来的动态蜜罐，无需独立部署）
 - 支持多场景（办公环境、线上环境、Docker）
 - 机器学习判断可疑行为
@@ -61,14 +63,16 @@
 │  ├─analyser//守护进程
 │  └─analyser//控制agent更新、分析agent状态、统计agent日志
 │
-└─consumer//消费kafka-topic更新本地静态日志库
+├─consumer//消费kafka-topic更新本地静态日志库
+│
+└─end
 ```
 
 ## 源码结构
 ```
 ├─public
-│  ├─network //TSL传输
-│  ├─storage //mysql封装
+│  ├─network //TLS传输
+│  ├─storage //Mysql封装
 │  └─task //核心任务注册调度
 │
 ├─agent // Agent工程
