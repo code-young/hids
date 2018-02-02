@@ -127,7 +127,7 @@
 
 ## 参与者及致谢
 
-参与者：杨学良
+参与者：杨学良（yangxueliangit@163.com）
 
 参考：
 OSSEC
