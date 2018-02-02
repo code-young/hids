@@ -21,7 +21,7 @@
 
 - 实时监控、秒级响应
 - 静默部署、信息收集
-- 横向对比、未知预警（文件&&网络连接）
+- 横向对比、未知预警（文件&网络连接）
 - 高级分析、威胁溯源（网络->进程行为）
 - 全局响应、快速阻断（进程、文件、网络）
 
@@ -57,13 +57,13 @@
 │  ├─syscheck //信息收集（软件信息、进程信息、用户信息、组信息、自启动信息、服务信息、端口信息、防火墙信息、内核模块信息、配置文件信息）
 │  └─logforward  //日志转发（RPC、队列缓存、离线Sqlite3缓存）
 │  
-├─collect  // Collect工程
+├─collect 
 │  ├─guard //守护进程
-│  └─collect //转发Agent通知、同步Analysis指令、统计Agent状态，上报Agent心跳
+│  └─main //转发Agent通知、同步Analysis指令、统计Agent状态，上报Agent心跳
 │
 ├─analysis
-│  ├─guard//守护进程
-│  └─analysis//控制Agent更新、分析Agent状态、统计Agent日志
+│  ├─guard //守护进程
+│  └─main //控制Agent更新、分析Agent状态、统计Agent日志
 │
 ├─consumer//消费Kafka-topic更新本地静态日志库
 │
@@ -72,7 +72,7 @@
 
 ## 源码结构
 ```
-├─public
+├─public // 公共模块
 │  ├─network //TLS传输
 │  ├─storage //Mysql封装
 │  └─task //核心任务注册调度
@@ -88,7 +88,7 @@
 │  ├─collect//核心任务注册及消息处理
 │  └─put_cgi //Agent 请求Reply处理
 │
-├─analysis
+├─analysis // Analysis工程
 │  ├─analysis//核心任务注册及消息处理
 │  ├─security-env//安全运行环境
 │  ├─consumer//Libkafka消费日志
