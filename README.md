@@ -80,27 +80,47 @@
 ├─agent // Agent工程
 │  ├─dlfunc //检测信息收集
 │  ├─logstash //RPC 日志缓存转发
-│  ├─report //agent通知上报
-│  ├─storage //sqlite3本地信息缓存
-│  └─task //agent 核心任务注册及消息处理
+│  ├─report //Agent通知上报
+│  ├─storage //Sqlite3本地信息缓存
+│  └─task //Agent 核心任务注册及消息处理
 │
 ├─collect // Collect工程
 │  ├─collect//核心任务注册及消息处理
-│  └─put_cgi //agent 请求reply处理
+│  └─put_cgi //Agent 请求Reply处理
 │
 ├─analysis
 │  ├─analysis//核心任务注册及消息处理
 │  ├─security-env//安全运行环境
-│  ├─consumer//libkafka消费日志
-│  └─put_cgi //Collector 请求reply处理
+│  ├─consumer//Libkafka消费日志
+│  └─put_cgi //Collector 请求Reply处理
 │
-├─web // Web工程
-│  ├─home // 配置文件
-│  ├─主机管理
+├─web  // web工程
+│  ├─Home // Agent集群、告警等概要信息
+│  │ 
+│  ├─主机管理 
+│  │  ├─主机状态 //宿主机基本信息及Agent存活摘要
+│  │  ├─主机分组 //宿主机Agent分组
+│  │  └─主机日志  //Agent任务执行次数统计
+│  │ 
 │  ├─Collector管理
+│  │  ├─Collector状态 //宿主机基本信息及Collector存活摘要
+│  │  └─Collector主机集 //单Collector挂载Agent集群状态
+│  │ 
 │  ├─任务模板
+│  │  ├─功能模板 //配置基本任务
+│  │  └─任务关联 //生成任务组，关联Agent组
+│  │ 
 │  ├─日志管理
-│  └─系统管理
+│  │  ├─主机日志 //主机模块更新、任务进程启停、宿主机负载信息
+│  │  ├─登录日志 //系统用户登入登出日志
+│  │  └─操作日志 //系统用户操作日志
+│  │ 
+│  ├─系统管理
+│  │  ├─系统状态 //Analyser主机系统状态
+│  │  ├─用户管理 //增加删除系统用户
+│  │  └─版本更新 //Agent更新包更新、主版本更新、分组更新
+│  │ 
+│  └─end
 │
 └─end
 ```
