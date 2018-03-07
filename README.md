@@ -35,16 +35,16 @@
 
 
 ## TODO
+- 网络连接
 - 配置精细化
 - 基线核查
-- 网络连接
 - Rootkit检查
 - 文件操作行为
 - 进程执行过程（系统调用、打开的文件、建立的Socket）
 - Linux使用者执行命令
 - Agent与Server通信的单双向验证（SSL）
-- 幻影蜜罐（基于真实环境虚化出来的动态蜜罐，无需独立部署）
-- 支持多场景（运维、研发、办公、线上环境、Docker）
+- 网络阻断（Iptc）、进程阻断、文件阻断
+- 动态蜜罐（基于真实环境虚化出来的动态蜜罐，无需独立部署）
 - 机器学习判断可疑行为（减少人为筛选过程）
 
 
@@ -95,31 +95,12 @@
 │  └─put_cgi //Collector 请求Reply处理
 │
 ├─web  // web工程
-│  ├─Home // Agent集群、告警等概要信息
-│  │ 
-│  ├─主机管理 
-│  │  ├─主机状态 //宿主机基本信息及Agent存活摘要
-│  │  ├─主机分组 //宿主机Agent分组
-│  │  └─主机日志  //Agent任务执行次数统计
-│  │ 
-│  ├─Collector管理
-│  │  ├─Collector状态 //宿主机基本信息及Collector存活摘要
-│  │  └─Collector主机集 //单Collector挂载Agent集群状态
-│  │ 
-│  ├─任务模板
-│  │  ├─功能模板 //配置基本任务
-│  │  └─任务关联 //生成任务组，关联Agent组
-│  │ 
-│  ├─日志管理
-│  │  ├─主机日志 //主机模块更新、任务进程启停、宿主机负载信息
-│  │  ├─登录日志 //系统用户登入登出日志
-│  │  └─操作日志 //系统用户操作日志
-│  │ 
-│  ├─系统管理
-│  │  ├─系统状态 //Analyser主机系统状态
-│  │  ├─用户管理 //增加删除系统用户
-│  │  └─版本更新 //Agent更新包更新、主版本更新、分组更新
-│  │ 
+│  ├─Home 
+│  ├─Agent manage
+│  ├─Collector manage 
+│  ├─Template manage
+│  ├─Log manage
+│  ├─System manage
 │  └─end
 │
 └─end
@@ -136,11 +117,12 @@ Netdata
 Nicstat
 Netstat
 Kmod.lsmod 
-Iptables
+Iptables(libiptc)
 Sysvinit
 Systemd
 Iotop
 Tiger
+ESET(Sysinspector)
 
 
 致谢列表：
